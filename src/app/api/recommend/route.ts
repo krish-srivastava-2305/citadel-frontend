@@ -44,7 +44,7 @@ import { cosineSimilarity } from "@/app/util/cosineSimilarity";
 
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
     try {
-        const { userId } = await req.json();
+        const { userId, seen_ids } = await req.json();
         if (!userId) {
             return NextResponse.json(
                 { error: "User ID is required" },
@@ -58,7 +58,7 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
                 { status: 404 }
             );
         }
-        const seen_ids: string[] = user.seen_ids || [];
+        // const seen_ids: string[] = user.seen_ids || [];
         const city: string = user.geographic.city;
         seen_ids.push(String(userId));
 
@@ -97,7 +97,7 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
         });
 
         return NextResponse.json(
-            { recommendations: recommendations.map(r => ({ id: r.id })) },
+            { recommendations: recommendations.map(r => (r.id)) },
             { status: 200 }
         );
 
