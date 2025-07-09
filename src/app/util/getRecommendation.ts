@@ -26,7 +26,9 @@ const getRecommendation = async (chunk_text: string, city: string, seen_ids: str
         });
 
 
-        return response.result.hits;
+        return response.result.hits.map((hit) => ({
+            id: hit._id,
+        }));
 
     } catch (error) {
         console.error("Error fetching recommendations:", error);
