@@ -5,7 +5,7 @@ import { cosineSimilarity } from "@/app/util/cosineSimilarity";
 
 // export const POST = async (req: NextRequest): Promise<NextResponse> => {
 //     try {
-//         const { userId } = await req.json();
+//         const { userId, seen_ids } = await req.json();
 //         if (!userId) {
 //             return NextResponse.json(
 //                 { error: "User ID is required" },
@@ -20,11 +20,8 @@ import { cosineSimilarity } from "@/app/util/cosineSimilarity";
 //                 { status: 404 }
 //             );
 //         }
-
-//         const seen_ids = user.seen_ids || [];
 //         const chunk_text = user.chunkText || "default text";
 //         const city = user.geographic.city || "default city";
-//         seen_ids.push(String(userId));
 
 //         const recommendations = await getRecommendation(chunk_text, city, seen_ids);
 
