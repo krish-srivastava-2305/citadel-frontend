@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Citadel Frontend
 
-## Getting Started
+## How to Run Locally
 
-First, run the development server:
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/citadel-frontend.git
+    cd citadel-frontend
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Set up environment variables:**  
+    Copy `.env.example` to `.env` and update values as needed.
+
+4. **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+5. **Open your browser:**  
+    Visit [http://localhost:3000](http://localhost:3000)
+
+---
+
+## ENV
+
+Environment variables are managed via a `.env` file.  
+Typical variables include:
+
+```
+PINECONE_API_KEY=
+PINECONE_INDEX_HOST=
+PINECONE_INDEX_NAME=
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Refer to `.env.example` for all available options.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Working Flow
 
-## Learn More
+![Citadel Frontend Screenshot](public/diagram-export-7-10-2025-3_48_49-PM.png)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Working Demo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<video src="public/Recording 2025-07-10 160122.mp4" controls width="600">
+  Your browser does not support the video tag.
+</video>
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design Screenshot
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Citadel Frontend Design](public/Screenshot%202025-07-10%20160420.png)
+
+---
+
+## Explain Working
+
+- The frontend is built with [NextJS](https://nextjs.org/).
+- It communicates with backend APIs using REST endpoints.
+- At backend we have 2 Approaches.
+
+  1. **Pinecone Vector Database**:  
+     Uses Pinecone for storing and retrieving user profiles and recommendations.
+
+  2. **Inbuilt Cosine Similarity Calculations**:  
+     Implements cosine similarity calculations directly in the backend to generate recommendations.
+    
+- The frontend displays user profiles, recommendations, and allows interaction with the data.
+
+**At Frontend:**
+
+    1. We maintain a recommender queue that stores user IDs of the next user to be recommended.
+    
+    2. The queue is processed to fetch recommendations for each user.
+
+    3. Queue is updated everytime it has less than 2 users left.
+
+    4. This queue implementation ensures that the frontend always has a fresh set of recommendations to display.(Makes sure user wait time is less than 100ms)

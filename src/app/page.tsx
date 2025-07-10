@@ -68,6 +68,7 @@ export default function Home() {
   const fetchRecommendations = async () => {
     setLoading(true);
     try {
+      console.log("Fetching recommendations for userId:", userId);
       const response = await axios.post('/api/recommend', { userId, seen_ids: seenIds });
       const recommends: string[] = response.data.recommendations;
       if (recommends && recommends.length > 0) {
@@ -85,11 +86,13 @@ export default function Home() {
 
   // Handle Like and Dislike Actions
   const handleLike = () => {
+    console.log("Recommender Queue Size", recommenderSize);
     console.log("Liked", nextRecommendation?.id);
     getNextUser();
   };
 
   const handleDislike = () => {
+    console.log("Recommender Queue Size", recommenderSize);
     console.log("Disliked", nextRecommendation?.id);
     getNextUser();
   };
