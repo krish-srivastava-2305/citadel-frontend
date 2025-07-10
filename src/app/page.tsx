@@ -14,13 +14,13 @@ interface RecommenderQueue {
 }
 
 export default function Home() {
-  const [userId, setUserId] = useState<number>(94);
-  const [seenIds, setSeenIds] = useState<string[]>(["94"]);
-  const [recommenderSize, setRecommenderSize] = useState<number>(0);
-  const [recommendations, setRecommendations] = useState<RecommenderQueue | null>(new Queue());
+  const [userId, setUserId] = useState<number>(94); // Change this to change user
+  const [seenIds, setSeenIds] = useState<string[]>([]); // Manages IDs that have been seen by the user
+  const [recommenderSize, setRecommenderSize] = useState<number>(0); // Tracks when to fetch fresh recommendations
+  const [recommendations, setRecommendations] = useState<RecommenderQueue | null>(new Queue()); // Queue to manage user recommendations
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [nextRecommendation, setNextRecommendation] = useState<any | null>(null);
+  const [nextRecommendation, setNextRecommendation] = useState<any | null>(null); // Holds the next user recommendation to be displayed
 
   // Initialize Recommendations and Trigger Fetch based on Recommendations Left
   useEffect(() => {
@@ -99,16 +99,6 @@ export default function Home() {
 
   return (
     <div className="bg-white text-white min-h-screen">
-      {/* Status Bar */}
-      {/* <div className="flex justify-between items-center p-4 text-sm">
-        <span>12:45</span>
-        <div className="flex space-x-1">
-          <div className="w-4 h-4 bg-white rounded-full"></div>
-          <div className="w-4 h-4 bg-white rounded-full"></div>
-          <div className="w-4 h-4 bg-white rounded-full"></div>
-        </div>
-      </div> */}
-
       {nextRecommendation ? (
         <ProfilePage
           userData={nextRecommendation}
@@ -120,32 +110,6 @@ export default function Home() {
           <div className="text-white text-lg">Loading recommendation...</div>
         </div>
       )}
-
-      {/* Bottom Navigation */}
-      {/* <div className="fixed bottom-0 left-0 right-0 bg-gray-800 px-4 py-2">
-        <div className="flex justify-around items-center">
-          <div className="flex flex-col items-center">
-            <div className="w-6 h-6 bg-green-400 rounded"></div>
-            <span className="text-xs text-green-400 mt-1">Explore</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-6 h-6 bg-gray-400 rounded"></div>
-            <span className="text-xs text-gray-400 mt-1">Events</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-6 h-6 bg-gray-400 rounded"></div>
-            <span className="text-xs text-gray-400 mt-1">Chats</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-6 h-6 bg-gray-400 rounded"></div>
-            <span className="text-xs text-gray-400 mt-1">Notifications</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-6 h-6 bg-gray-400 rounded"></div>
-            <span className="text-xs text-gray-400 mt-1">Profile</span>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }

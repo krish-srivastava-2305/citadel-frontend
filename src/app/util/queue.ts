@@ -1,3 +1,4 @@
+// Queue implementation for managing user recommendations
 class Queue {
     private items: string[] = [];
 

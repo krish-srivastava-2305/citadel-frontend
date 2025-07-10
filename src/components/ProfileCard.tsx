@@ -3,6 +3,7 @@ import { Heart, MessageCircle, Bell, User, Calendar, Search, X } from 'lucide-re
 
 const ProfilePage = ({ userData, onLike, onDislike }: { userData: any, onLike: () => void, onDislike: () => void }) => {
 
+    // Extract user data
     const name = userData.name || "Unknown User";
     const age = userData.personal?.age || 21;
     const university = userData.academic?.university || "";
