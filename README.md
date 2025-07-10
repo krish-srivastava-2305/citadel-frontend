@@ -52,6 +52,9 @@ Refer to `.env.example` for all available options.
   Your browser does not support the video tag.
 </video>
 
+If video is not playing you can watch it here:
+[Citadel Frontend Demo](/public/Recording%202025-07-10%20160122.mp4)
+
 ---
 
 ## Design Screenshot
