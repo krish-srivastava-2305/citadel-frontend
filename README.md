@@ -48,12 +48,12 @@ Refer to `.env.example` for all available options.
 
 ## Working Demo
 
-<video src="public/Recording 2025-07-10 160122.mp4" controls width="600">
+<video src="https://drive.google.com/file/d/1-9IQO9wGYK9IDkBT-y8U8P1NwmzEI0lj/view?usp=sharing" controls width="600">
   Your browser does not support the video tag.
 </video>
 
 If video is not playing you can watch it here:
-[Citadel Frontend Demo](/public/Recording%202025-07-10%20160122.mp4)
+[Citadel Frontend Demo](https://drive.google.com/file/d/1-9IQO9wGYK9IDkBT-y8U8P1NwmzEI0lj/view?usp=sharing)
 
 ---
 
